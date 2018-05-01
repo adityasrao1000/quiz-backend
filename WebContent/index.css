@@ -1,0 +1,18 @@
+.fa-trash-o{
+ cursor:pointer;
+}
+.dropdown-toggle{
+	cursor:pointer;
+}
+.well-sm{
+    height:22px;
+}
+.well-sm p{
+    margin-top: -8px;
+}
+
+.fa-eye{
+	margin-right:15px;
+	font-size: 20px;
+	cursor:pointer;
+}
