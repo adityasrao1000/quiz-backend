@@ -2,10 +2,7 @@
 var vm = new Vue({
 	  el: '#index',
 	  data: {
-	      items: [
-	    	      {"item":"JavaScript was created by so and so in 1980. Since its creation its the most widely used language in front end web development .\nIt is supported by nearly all modern web browsers.\n\nexample:","type":"paragraph"},
-	    	      {"item":"let obj = { a: 8 };\nfunction fun(){\n  alert(obj.a);\n}\n\nfun();","type":"code"}
-	    	     ]
+	      items: []
 	  },
 	  methods: {
 		  submit: function(){

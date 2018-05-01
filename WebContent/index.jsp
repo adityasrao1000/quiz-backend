@@ -20,13 +20,7 @@
   </div>
   <div v-if="items.length" v-for="(value, index) in items">
   <div class="code" v-if="value.type==='code'">
-    <div class="row">
-    <h4 class="col-sm-6">Code:</h4>
-    <h4 class="col-sm-6" style="text-align:right">
-    <i class="fa fa-eye" aria-hidden="true"  data-toggle="collapse" v-bind:data-target="'#demo'+index"></i>
-    <i data-toggle="tooltip" data-placement="top" title="delete" class="fa fa-trash-o" @click="deleteItem(index)"></i>
-    </h4>
-    </div>
+    <jsp:include page="content-options.jsp" />
     <textarea class="form-control" rows="6" style="resize: vertical;" v-bind:value="value.item" @input="insert($event, index)"></textarea>
     <div v-bind:id="'demo'+index" class="collapse">
     <pre class="language-css" id="pre">{{value.item}}</pre>
@@ -35,13 +29,7 @@
 	<jsp:include page="add-content.jsp" />
   </div>
   <div class="paragraph" v-if="value.type==='paragraph'">
-    <div class="row">
-    <h4 class="col-sm-6">Paragraph:</h4>
-    <h4 class="col-sm-6" style="text-align:right">
-    <i class="fa fa-eye" aria-hidden="true"  data-toggle="collapse" v-bind:data-target="'#demo'+index"></i>
-    <i data-toggle="tooltip" data-placement="top" title="delete" class="fa fa-trash-o" @click="deleteItem(index)"></i>
-    </h4>
-    </div>
+    <jsp:include page="content-options.jsp" />
     <textarea class="form-control" rows="6" style="resize: vertical;" v-bind:value="value.item" class="paragraph"  @input="insert($event, index)"></textarea>
     <div v-bind:id="'demo'+index" class="collapse">
     <p style="background-color: #f5f5f5; border: 1px solid #ccc;" class="language-css" id="pre">{{value.item}}</p>
@@ -50,13 +38,7 @@
 	<jsp:include page="add-content.jsp" />
   </div>
   <div class="title" v-if="value.type==='title'">
-    <div class="row">
-    <h4 class="col-sm-6">title:</h4>
-    <h4 class="col-sm-6" style="text-align:right">
-    <i class="fa fa-eye" aria-hidden="true"  data-toggle="collapse" v-bind:data-target="'#demo'+index"></i>
-    <i data-toggle="tooltip" data-placement="top" title="delete" class="fa fa-trash-o" @click="deleteItem(index)"></i>
-    </h4>
-    </div>
+    <jsp:include page="content-options.jsp" />
     <input class="form-control" rows="6" v-bind:value="value.item" class="paragraph"  @input="insert($event, index)">
     <div v-bind:id="'demo'+index" class="collapse">
     <h4 style="background-color: #f5f5f5; border: 1px solid #ccc; margin-top:0; padding: 6px 1px;" class="language-css" id="pre">{{value.item}}</h4>
