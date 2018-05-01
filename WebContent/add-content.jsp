@@ -1,4 +1,4 @@
-<div class="well well-sm">
+<div class="well well-sm well-color">
   <div class="dropdown" style="float:left;">
   <p class="dropdown-toggle" data-toggle="dropdown">Add Content <span class="glyphicon glyphicon-plus"></span></p>
   <ul class="dropdown-menu">

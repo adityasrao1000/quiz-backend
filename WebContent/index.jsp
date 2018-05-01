@@ -45,7 +45,9 @@
 	<jsp:include page="add-content.jsp" />
   </div>
   </div>
-  <button @click="send" style="display:block;margin:auto;" type="button" class="btn btn-info">Commit changes</button>
+  <button @click="send" v-if="items.length>0" style="display:block;margin:auto;" type="button" class="btn btn-info">
+  Commit changes
+  </button>
   <br><br>
 </div>
 <div class="col-sm-2">

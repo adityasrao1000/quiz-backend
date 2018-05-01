@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+*{
+	font-family: 'Roboto', sans-serif;
+}
 .fa-trash-o{
- cursor:pointer;
+	cursor:pointer;
+    color:#e53935;
 }
 .dropdown-toggle{
 	cursor:pointer;
@@ -15,8 +21,22 @@
 	margin-right:15px;
 	font-size: 20px;
 	cursor:pointer;
+	color: #1976D2;
 }
 .dropdown-menu{
 	margin-top: -10px;
 	margin-left: -10px;
+}
+.content-ops{
+	background: whitesmoke;
+	border: 1px solid lightgrey;
+	border-bottom:none;"
+}
+textarea.form-control{
+	border-top-right-radius:0px;
+	border-top-left-radius:0px;
+}
+.well-color{
+	background:#BDBDBD;
+	color:white;
 }
