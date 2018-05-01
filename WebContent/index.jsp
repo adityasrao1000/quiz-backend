@@ -23,7 +23,7 @@
     <div v-bind:id="'demo'+index" class="collapse">
     <pre class="language-css" id="pre">{{value.item}}</pre>
     </div>
-	<br><br>
+	<br>
 	<jsp:include page="add-content.jsp" />
   </div>
   <div class="paragraph" v-if="value.type==='paragraph'">
@@ -32,7 +32,7 @@
     <div v-bind:id="'demo'+index" class="collapse">
     <p style="background-color: #f5f5f5; border: 1px solid #ccc;" class="language-css" id="pre">{{value.item}}</p>
     </div>
-    <br><br>
+    <br>
 	<jsp:include page="add-content.jsp" />
   </div>
   <div class="title" v-if="value.type==='title'">
@@ -41,16 +41,16 @@
     <div v-bind:id="'demo'+index" class="collapse">
     <h4 style="background-color: #f5f5f5; border: 1px solid #ccc; margin-top:0; padding: 6px 1px;" class="language-css" id="pre">{{value.item}}</h4>
     </div>
-	<br><br>
+	<br>
 	<jsp:include page="add-content.jsp" />
   </div>
   <div class="title" v-if="value.type==='image-link'">
     <jsp:include page="content-options.jsp" />
     <input class="form-control" rows="6" v-bind:value="value.item" class="paragraph"  @input="insert($event, index)">
     <div v-bind:id="'demo'+index" class="collapse">
-    <image style="border: 1px solid #ccc; margin:auto; margin-top:0;" class="img-responsive" v-bind:src="value.item">
+    <image @error="imageFailed($event)" class="img-responsive" v-bind:src="value.item">
     </div>
-	<br><br>
+	<br>
 	<jsp:include page="add-content.jsp" />
   </div>
   </div>

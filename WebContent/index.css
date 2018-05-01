@@ -59,3 +59,8 @@ textarea.form-control, input.form-control, .btn{
 .collapse p,  .collapse h4{
 	padding-left:10px;
 }
+.img-responsive{
+	 max-height:400px;
+	 margin:auto;
+	 margin-top:0;
+}
