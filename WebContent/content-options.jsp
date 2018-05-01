@@ -1,7 +1,7 @@
 <div class="container-fluid">
 <div class="row content-ops">
 <div class="col-xs-6">
- <h4>{{value.type}}:</h4>
+ <h4>{{value.type}}</h4>
 </div>
 <div class="col-xs-6">
 <h4 style="text-align:right">
