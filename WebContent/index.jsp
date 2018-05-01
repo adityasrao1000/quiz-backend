@@ -14,10 +14,8 @@
 </div>
 <div class="col-sm-9">
   <br><br>
-  <div>  
   
-    <jsp:include page="add-content.jsp" />
-  </div>
+  <jsp:include page="add-content.jsp" />
   <div v-if="items.length" v-for="(value, index) in items">
   <div class="code" v-if="value.type==='code'">
     <jsp:include page="content-options.jsp" />
