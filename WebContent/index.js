@@ -40,6 +40,9 @@ var vm = new Vue({
 			  if(type==='title'){
 				  this.items.splice(pos,0,{"item":"","type":"title"});
 			  }
+			  if(type==='image-link'){
+				  this.items.splice(pos,0,{"item":"","type":"image-link"});
+			  }
 		  }
 	  }
 });

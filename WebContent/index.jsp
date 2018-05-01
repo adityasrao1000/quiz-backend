@@ -44,6 +44,15 @@
 	<br><br>
 	<jsp:include page="add-content.jsp" />
   </div>
+  <div class="title" v-if="value.type==='image-link'">
+    <jsp:include page="content-options.jsp" />
+    <input class="form-control" rows="6" v-bind:value="value.item" class="paragraph"  @input="insert($event, index)">
+    <div v-bind:id="'demo'+index" class="collapse">
+    <image style="border: 1px solid #ccc; margin:auto; margin-top:0;" class="img-responsive" v-bind:src="value.item">
+    </div>
+	<br><br>
+	<jsp:include page="add-content.jsp" />
+  </div>
   </div>
   <button @click="send" v-if="items.length>0" style="display:block;margin:auto;" type="button" class="btn btn-info">
   Commit changes
