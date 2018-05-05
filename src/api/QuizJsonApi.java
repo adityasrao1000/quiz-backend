@@ -23,7 +23,6 @@ public class QuizJsonApi {
     @RequestMapping(value = "/{param}",  method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<String> findOne(@PathVariable("param") String id, @RequestBody String json) {  
-    	
     	try{    
              streamFile(json,id);
         }

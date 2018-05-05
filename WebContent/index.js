@@ -32,7 +32,8 @@ var vm = new Vue({
 		  },
 		  insertContent: function(pos, type){
 			  if(type==='code'){
-				  this.items.splice(pos,0,{"item":"","type":"code"});
+				  let language = this.selectedLanguage;
+				  this.items.splice(pos,0,{"item":"","type":"code", "language": "javascript"});
 			  }
 			  if(type==='paragraph'){
 				  this.items.splice(pos,0,{"item":"","type":"paragraph"});
@@ -43,6 +44,9 @@ var vm = new Vue({
 			  if(type==='image-link'){
 				  this.items.splice(pos,0,{"item":"","type":"image-link"});
 			  }
+		  },
+		  updateLanguage: function(event, index) {
+			    this.items[index].language = event.target.value;
 		  },
 		  imageFailed: function(event){
 			  event.target.src="https://energywater.gr/wp-content/uploads/2017/12/noimage-9-1000x1000.png";

@@ -18,7 +18,24 @@
   <jsp:include page="add-content.jsp" />
   <div v-if="items.length" v-for="(value, index) in items">
   <div class="code" v-if="value.type==='code'">
-    <jsp:include page="content-options.jsp" />
+    <div class="container-fluid">
+	<div class="row content-ops">
+	<div class="col-xs-6">
+	 <h4 style="margin-top: 10px;">{{value.type}}</h4>
+	</div>
+	<div class="col-xs-6">
+	<h4 style="text-align:right; display:flex">
+	<select class="form-control input-sm" v-bind:value="value.language" @input="updateLanguage($event, index)">
+    <option>javascript</option>
+    <option>css</option>
+    <option>markup</option>
+    </select>
+	 <i style="margin-top:5px; margin-left:12px" class="fa fa-eye" aria-hidden="true"  data-toggle="collapse" title="preview" v-bind:data-target="'#demo'+index"></i>
+	 <i style="margin-top:7px" title="delete" class="fa fa-trash-o" @click="deleteItem(index)"></i>
+	</h4>
+	</div>
+	</div>
+	</div>
     <textarea class="form-control" rows="6" style="resize: vertical;" v-bind:value="value.item" @input="insert($event, index)"></textarea>
     <div v-bind:id="'demo'+index" class="collapse">
     <pre class="language-css" id="pre">{{value.item}}</pre>
