@@ -20,11 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class QuizJsonApi {
 		
 
-    @RequestMapping(value = "/{param}",  method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/{tutorial}/{section}",  method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<String> findOne(@PathVariable("param") String id, @RequestBody String json) {  
+    public ResponseEntity<String> findOne(@PathVariable("tutorial") String tutorial,@PathVariable("section") String section, @RequestBody String json) {  
     	try{    
-            streamFile(json,id);
+            streamFile(json,tutorial,section);
         }
     	catch(ParseException e){
     		System.out.println(e);
@@ -41,11 +41,11 @@ public class QuizJsonApi {
 		return new ResponseEntity<String>("success", HttpStatus.OK);				
 	}
     
-    public static void streamFile(String json, String id) throws IOException, ParseException {
+    public static void streamFile(String json, String tutorial, String section) throws IOException, ParseException {
     	
     	JSONParser parser = new JSONParser();
     	JSONArray json1 = (JSONArray) parser.parse(json);
-        FileOutputStream fout=new FileOutputStream("D:\\"+id+"\\test.json");  
+        FileOutputStream fout=new FileOutputStream("D:\\javascript\\"+tutorial+"\\"+section+".json");  
         fout.write(json1.toString().getBytes());  
         if(fout!=null) {
           fout.close(); 

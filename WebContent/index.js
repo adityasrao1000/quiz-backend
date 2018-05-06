@@ -15,9 +15,10 @@ var vm = new Vue({
 		  },
 		  send: function(){
 			  let items = this.items;
+			  let url = "tutorial/"+this.tutorial+"/"+this.section;
 			  axios({
 				  method: 'post',
-				  url: 'tutorial/javascript',
+				  url: url,
 				  data: items,
 				  headers: { contentType: "application/json; charset=utf-8"}
 				})

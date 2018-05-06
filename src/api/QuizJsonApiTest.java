@@ -9,7 +9,7 @@ public class QuizJsonApiTest {
 	
 	@Test(expected = ParseException.class)
     public void testException() throws IOException, ParseException {	
-	   QuizJsonApi.streamFile("[{\"test:\"\"done\"]","javascript");  
+	   QuizJsonApi.streamFile("[{\"test:\"\"done\"]","javascript","overview");  
     }
 
 }
