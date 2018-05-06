@@ -13,8 +13,23 @@
 <div class="col-sm-1">
 </div>
 <div class="col-sm-9">
-  <br><br>
-  
+  <br>
+  <div class="row">
+    <div class="col-xs-6">
+      <p>Tutorial</p>
+      <select class="form-control input-sm" v-bind:value="tutorial" @input="updatetutorial()">
+	    <option>javascript</option>
+	    <option>javascript</option>
+	  </select>
+    </div>
+    <div class="col-xs-6">
+      <p>Section</p>
+      <select class="form-control input-sm" v-bind:value="section" @input="updatetutorial()">
+	    <option>javascript</option>
+	  </select>
+    </div>
+  </div>
+  <br> 
   <jsp:include page="add-content.jsp" />
   <div v-if="items.length" v-for="(value, index) in items">
   <div class="code" v-if="value.type==='code'">
@@ -47,7 +62,7 @@
     <jsp:include page="content-options.jsp" />
     <textarea class="form-control" rows="6" style="resize: vertical;" v-bind:value="value.item" class="paragraph"  @input="insert($event, index)"></textarea>
     <div v-bind:id="'demo'+index" class="collapse">
-    <p style="background-color: #f5f5f5; border: 1px solid #ccc;" class="language-css" id="pre">{{value.item}}</p>
+    <p style="background-color: #f5f5f5; border: 1px solid #ccc;" class="language-css" v-html="value.item"></p>
     </div>
     <br>
 	<jsp:include page="add-content.jsp" />
