@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.json.simple.JSONArray;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,9 +36,11 @@ public class GetTutorialDirectories {
 	    	  }
 	    	});
 	    	
-	    	List<String> dirs = Arrays.asList(directories);
+	    	List<String> dirs = Arrays.asList(directories).stream()
+		                        .filter(p -> !(p.equals("quiz") ||p.equals("images") ))
+		                        .collect(Collectors.toList()); // collecting as list;
+	    	
 	        dirs.forEach(val -> jsonArray.add(val));
-	        System.out.println(jsonArray.toJSONString());
     	}catch(Exception e) {
     		System.out.println(e);
     	}

@@ -76,6 +76,8 @@ var vm = new Vue({
 				.then(function (response) {
 				    if(response.data.length > 0){
 				     response.data.forEach(result => vm.sections.push(result) );
+				     vm.section = vm.sections[0];
+				     vm.updateJsonObject();
 				    }
 			    })
 			    .catch(function (error) {
@@ -85,6 +87,25 @@ var vm = new Vue({
 		  updatefile: function(event){
 			  this.tutorial = event.target.value;
 			  this.updatetutorial();
+		  },
+		  updateJsonObject: function(event){
+			  if(event){
+			    this.section = event.target.value;
+			  }
+			  this.items =[];
+			  let url = 'gettutorial/'+this.tutorial+"/"+this.section;
+			  axios({
+				  method: 'get',
+				  url: url
+				})
+				.then(function (response) {
+					if(response.data.length > 0){
+					     response.data.forEach(result => vm.items.push(result) );
+					    }
+			    })
+			    .catch(function (error) {
+			        console.log(error);
+			    });
 		  }
 	  },
 	  mounted: function(){

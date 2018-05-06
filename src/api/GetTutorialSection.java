@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.json.simple.JSONArray;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,14 +30,20 @@ public class GetTutorialSection {
     	jsonArray =  new JSONArray();
     	try {
 	    	File file = new File(location+name);
+	    	
 	    	String[] directories = file.list(new FilenameFilter() {
 	    	  @Override
 	    	  public boolean accept(File current, String name) {
-	    	    return new File(current, name).isFile();
+	    		String fileName = new File(current, name).getName();
+	    	    return new File(current, name).isFile() && fileName.substring(fileName.lastIndexOf(".")+1).equals("json");
 	    	  }
 	    	});
 	    	
-	    	List<String> dirs = Arrays.asList(directories);
+	    	List<String> dirs = Arrays.asList(directories).stream()
+	    			            .map(p -> p = p.substring(0, p.lastIndexOf(".")))
+	    			            .filter(p -> !p.equals("menu"))
+	    			            .collect(Collectors.toList()); // collecting as list;
+	    	
 	        dirs.forEach(val -> jsonArray.add(val));
 	        System.out.println(jsonArray.toJSONString());
     	}catch(Exception e) {

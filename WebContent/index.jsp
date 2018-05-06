@@ -23,7 +23,7 @@
     </div>
     <div class="col-xs-6">
       <p>Section</p>
-      <select class="form-control input-sm" v-bind:value="section">
+      <select class="form-control input-sm" v-bind:value="section"  @input="updateJsonObject($event)">
 	    <option v-for="val in sections">{{val}}</option>
 	  </select>
     </div>
