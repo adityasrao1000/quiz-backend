@@ -2,7 +2,10 @@
 var vm = new Vue({
 	  el: '#index',
 	  data: {
-	      items: []
+		  tutorial: 'javascript',
+		  section: 'overview',
+	      items: [],
+          tutorials: []
 	  },
 	  methods: {
 		  submit: function(){
@@ -62,8 +65,23 @@ var vm = new Vue({
 		  imageFailed: function(event){
 			  event.target.src="https://energywater.gr/wp-content/uploads/2017/12/noimage-9-1000x1000.png";
 		  },
-		  show: function(val){
-			  alert(val)
+		  updatetutorial: function(event){
+			  
 		  }
+	  },
+	  mounted: function(){
+		  axios({
+			  method: 'get',
+			  url: 'directories'
+			})
+			.then(function (response) {
+				self = this;
+			    if(response.data.length > 0){
+			     response.data.forEach(result => vm.tutorials.push(result) );
+			    }
+		    })
+		    .catch(function (error) {
+		        console.log(error);
+		    });
 	  }
 });
