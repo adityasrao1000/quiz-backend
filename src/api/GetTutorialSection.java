@@ -1,56 +1,47 @@
 package api;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.Arrays;
+import java.util.List;
 import org.json.simple.JSONArray;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/gettutorial")
+@RequestMapping("/getsection")
 public class GetTutorialSection {
 		
-
-    @RequestMapping(value = "/{name}/{section}",  method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+	final static String location = "D:\\javascript\\";
+	JSONArray jsonArray;
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/{name}",  method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<String> findOne(@PathVariable("param") String id, @RequestBody String json) {  
-    	try{    
-            getFile(json,id);
-        }
-    	catch(ParseException e){
+    public ResponseEntity<String> getSections(@PathVariable("name") String name) { 
+    	
+    	jsonArray =  new JSONArray();
+    	try {
+	    	File file = new File(location+name);
+	    	String[] directories = file.list(new FilenameFilter() {
+	    	  @Override
+	    	  public boolean accept(File current, String name) {
+	    	    return new File(current, name).isFile();
+	    	  }
+	    	});
+	    	
+	    	List<String> dirs = Arrays.asList(directories);
+	        dirs.forEach(val -> jsonArray.add(val));
+	        System.out.println(jsonArray.toJSONString());
+    	}catch(Exception e) {
     		System.out.println(e);
-    		return new ResponseEntity<String>("malformed json", HttpStatus.NOT_ACCEPTABLE);
     	}
-    	catch(IOException e){
-    		System.out.println(e);
-    		return new ResponseEntity<String>("failure", HttpStatus.INTERNAL_SERVER_ERROR);
-    	}  
-    	catch(Exception e){
-    		System.out.println(e);
-    		return new ResponseEntity<String>("failure", HttpStatus.INTERNAL_SERVER_ERROR);
-    	}   
-		return new ResponseEntity<String>("success", HttpStatus.OK);				
+		return new ResponseEntity<String>(jsonArray.toJSONString(), HttpStatus.OK);
 	}
     
-    public static void getFile(String json, String id) throws IOException, ParseException {
-    	
-    	JSONParser parser = new JSONParser();
-    	JSONArray json1 = (JSONArray) parser.parse(json);
-        FileOutputStream fout=new FileOutputStream("D:\\"+id+"\\test.json");  
-        fout.write(json1.toString().getBytes());  
-        if(fout!=null) {
-          fout.close(); 
-        }
-        System.out.println("success...");    
-       
-    }
 }

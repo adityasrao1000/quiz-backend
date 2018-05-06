@@ -5,7 +5,8 @@ var vm = new Vue({
 		  tutorial: 'javascript',
 		  section: 'overview',
 	      items: [],
-          tutorials: []
+          tutorials: [],
+          sections: []
 	  },
 	  methods: {
 		  submit: function(){
@@ -65,19 +66,37 @@ var vm = new Vue({
 		  imageFailed: function(event){
 			  event.target.src="https://energywater.gr/wp-content/uploads/2017/12/noimage-9-1000x1000.png";
 		  },
-		  updatetutorial: function(event){
-			  
+		  updatetutorial: function(){
+			  this.sections =[];
+			  let url = 'getsection/'+this.tutorial;
+			  axios({
+				  method: 'get',
+				  url: url
+				})
+				.then(function (response) {
+				    if(response.data.length > 0){
+				     response.data.forEach(result => vm.sections.push(result) );
+				    }
+			    })
+			    .catch(function (error) {
+			        console.log(error);
+			    });
+		  },
+		  updatefile: function(event){
+			  this.tutorial = event.target.value;
+			  this.updatetutorial();
 		  }
 	  },
 	  mounted: function(){
+		  let self = this;
 		  axios({
 			  method: 'get',
 			  url: 'directories'
 			})
 			.then(function (response) {
-				self = this;
 			    if(response.data.length > 0){
 			     response.data.forEach(result => vm.tutorials.push(result) );
+			     self.updatetutorial();
 			    }
 		    })
 		    .catch(function (error) {

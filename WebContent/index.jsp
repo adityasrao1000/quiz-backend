@@ -17,15 +17,14 @@
   <div class="row">
     <div class="col-xs-6">
       <p>Tutorial</p>
-      <select class="form-control input-sm" v-bind:value="tutorial" @input="updatetutorial($event)">
+      <select class="form-control input-sm" v-bind:value="tutorial" @input="updatefile($event)">
 	    <option v-for="val in tutorials">{{val}}</option>
 	  </select>
     </div>
     <div class="col-xs-6">
       <p>Section</p>
-      <select class="form-control input-sm" v-bind:value="section" @input="updatetutorial($event)">
-	    <option>statement</option>
-	    <option>overview</option>
+      <select class="form-control input-sm" v-bind:value="section">
+	    <option v-for="val in sections">{{val}}</option>
 	  </select>
     </div>
   </div>
