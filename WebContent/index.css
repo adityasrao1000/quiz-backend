@@ -16,7 +16,9 @@
 .well-sm p{
     margin-top: -8px;
 }
-
+select.form-control{
+	min-width:70px;
+}
 .fa-eye{
 	margin-right:15px;
 	font-size: 20px;

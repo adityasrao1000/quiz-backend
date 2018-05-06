@@ -44,12 +44,26 @@ var vm = new Vue({
 			  if(type==='image-link'){
 				  this.items.splice(pos,0,{"item":"","type":"image-link"});
 			  }
+			  if(type==='bullet'){
+				  this.items.splice(pos,0,{"item":[''],"type":"bullet"});
+			  }
 		  },
 		  updateLanguage: function(event, index) {
 			    this.items[index].language = event.target.value;
 		  },
+		  insertbulletValue: function(event, index, subindex){
+			  this.items[index].item[subindex] = event.target.value;
+			  this.items[index].item.push(' ');
+			  this.items[index].item.pop();
+		  },
+		  addSubBulletItem: function(index){
+			  this.items[index].item.push(' ');
+		  },
 		  imageFailed: function(event){
 			  event.target.src="https://energywater.gr/wp-content/uploads/2017/12/noimage-9-1000x1000.png";
+		  },
+		  show: function(val){
+			  alert(val)
 		  }
 	  }
 });

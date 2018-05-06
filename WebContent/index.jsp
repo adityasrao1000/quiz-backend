@@ -28,7 +28,7 @@
 	<select class="form-control input-sm" v-bind:value="value.language" @input="updateLanguage($event, index)">
     <option>javascript</option>
     <option>css</option>
-    <option>markup</option>
+    <option>clike</option>
     </select>
 	 <i style="margin-top:5px; margin-left:12px" class="fa fa-eye" aria-hidden="true"  data-toggle="collapse" title="preview" v-bind:data-target="'#demo'+index"></i>
 	 <i style="margin-top:7px" title="delete" class="fa fa-trash-o" @click="deleteItem(index)"></i>
@@ -65,7 +65,33 @@
     <jsp:include page="content-options.jsp" />
     <input class="form-control" rows="6" v-bind:value="value.item" class="paragraph"  @input="insert($event, index)">
     <div v-bind:id="'demo'+index" class="collapse">
-    <image @error="imageFailed($event)" class="img-responsive" v-bind:src="value.item">
+    <ul><li>{{value.item}}</li></ul>
+    </div>
+	<br>
+	<jsp:include page="add-content.jsp" />
+  </div>
+  <div class="title" v-if="value.type==='bullet'">
+    <div class="container-fluid">
+	<div class="row content-ops">
+	<div class="col-xs-6">
+	 <h4>{{value.type}}</h4>
+	</div>
+	<div class="col-xs-6">
+	<h4 style="text-align:right;">
+	 <i class="fa fa-plus" @click="addSubBulletItem(index)" style="margin-right:12px;"></i>
+	 <i class="fa fa-eye" aria-hidden="true"  data-toggle="collapse" title="preview" v-bind:data-target="'#demo'+index"></i>
+	 <i class="fa fa-trash-o" @click="deleteItem(index)"></i>
+	</h4>
+	</div>
+	</div>
+	</div>
+    <div v-for="(subvalue,subindex) in value.item">
+    <input class="form-control" rows="6" v-bind:value="subvalue" class="paragraph"  @input="insertbulletValue($event, index, subindex)">
+    </div>
+    <div v-bind:id="'demo'+index" class="collapse">
+    <ul>
+      <li v-for="val in value.item">{{val}}</li>
+    </ul>
     </div>
 	<br>
 	<jsp:include page="add-content.jsp" />

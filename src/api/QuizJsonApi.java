@@ -24,7 +24,7 @@ public class QuizJsonApi {
     @ResponseBody
     public ResponseEntity<String> findOne(@PathVariable("param") String id, @RequestBody String json) {  
     	try{    
-             streamFile(json,id);
+            streamFile(json,id);
         }
     	catch(ParseException e){
     		System.out.println(e);
