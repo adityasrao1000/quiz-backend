@@ -23,4 +23,22 @@
 	<servlet-name>spring-web</servlet-name>
 	<url-pattern>/</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>tutorial</servlet-name>
+    <jsp-file>/index.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>tutorial</servlet-name>
+    <url-pattern>/tutorial</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>quiz</servlet-name>
+    <jsp-file>/quiz.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>quiz</servlet-name>
+    <url-pattern>/quiz</url-pattern>
+  </servlet-mapping>
 </web-app>

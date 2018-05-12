@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="tutorial/index.css">
 </head>
 <body>
+<jsp:include page="navbar.jsp" />
 <div class="container-fluid" id="index">
 <div class="row">
 <div class="col-sm-1">
