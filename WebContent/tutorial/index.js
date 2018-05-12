@@ -75,10 +75,15 @@ var vm = new Vue({
 				  url: url
 				})
 				.then(function (response) {
+					
+					//if folder has pages
 				    if(response.data.length > 0){
 				     response.data.forEach(result => vm.sections.push(result) );
 				     vm.section = vm.sections[0];
 				     vm.updateJsonObject();
+				    }else{
+				    	//if folder is empty
+				    	vm.items = [];
 				    }
 			    })
 			    .catch(function (error) {
@@ -101,8 +106,8 @@ var vm = new Vue({
 				})
 				.then(function (response) {
 					if(response.data.length > 0){
-					     response.data.forEach(result => vm.items.push(result) );
-					    }
+					   response.data.forEach(result => vm.items.push(result) );
+					}
 			    })
 			    .catch(function (error) {
 			        console.log(error);

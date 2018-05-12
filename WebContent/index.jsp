@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <%@ include file="libraries.jsp" %> 
-<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="tutorial/index.css">
 </head>
 <body>
 <div class="container-fluid" id="index">
@@ -29,7 +29,7 @@
     </div>
   </div>
   <br> 
-  <jsp:include page="add-content.jsp" />
+  <jsp:include page="tutorial/add-content.jsp" />
   <div v-if="items.length" v-for="(value, index) in items">
   <div class="code" v-if="value.type==='code'">
     <div class="container-fluid">
@@ -55,34 +55,34 @@
     <pre class="language-css" id="pre">{{value.item}}</pre>
     </div>
 	<br>
-	<jsp:include page="add-content.jsp" />
+	<jsp:include page="tutorial/add-content.jsp" />
   </div>
   <div class="paragraph" v-if="value.type==='paragraph'">
-    <jsp:include page="content-options.jsp" />
+    <jsp:include page="tutorial/content-options.jsp" />
     <textarea class="form-control" rows="6" style="resize: vertical;" v-bind:value="value.item" class="paragraph"  @input="insert($event, index)"></textarea>
     <div v-bind:id="'demo'+index" class="collapse">
     <p style="background-color: #f5f5f5; border: 1px solid #ccc;" class="language-css" v-html="value.item"></p>
     </div>
     <br>
-	<jsp:include page="add-content.jsp" />
+	<jsp:include page="tutorial/add-content.jsp" />
   </div>
   <div class="title" v-if="value.type==='title'">
-    <jsp:include page="content-options.jsp" />
+    <jsp:include page="tutorial/content-options.jsp" />
     <input class="form-control" rows="6" v-bind:value="value.item" class="paragraph"  @input="insert($event, index)">
     <div v-bind:id="'demo'+index" class="collapse">
     <h4 style="background-color: #f5f5f5; border: 1px solid #ccc; margin-top:0; padding: 6px 1px;" class="language-css" id="pre">{{value.item}}</h4>
     </div>
 	<br>
-	<jsp:include page="add-content.jsp" />
+	<jsp:include page="tutorial/add-content.jsp" />
   </div>
   <div class="title" v-if="value.type==='image-link'">
-    <jsp:include page="content-options.jsp" />
+    <jsp:include page="tutorial/content-options.jsp" />
     <input class="form-control" rows="6" v-bind:value="value.item" class="paragraph"  @input="insert($event, index)">
     <div v-bind:id="'demo'+index" class="collapse">
     <ul><li>{{value.item}}</li></ul>
     </div>
 	<br>
-	<jsp:include page="add-content.jsp" />
+	<jsp:include page="tutorial/add-content.jsp" />
   </div>
   <div class="title" v-if="value.type==='bullet'">
     <div class="container-fluid">
@@ -108,7 +108,7 @@
     </ul>
     </div>
 	<br>
-	<jsp:include page="add-content.jsp" />
+	<jsp:include page="tutorial/add-content.jsp" />
   </div>
   </div>
   <button @click="send" v-if="items.length>0" style="display:block;margin:auto;" type="button" class="btn btn-info">
@@ -120,6 +120,6 @@
 </div>
 </div>
 </div>
-<script src="index.js"></script>
+<script src="tutorial/index.js"></script>
 </body>
 </html>
