@@ -8,19 +8,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import static config.Variables.*;
 
 @Controller
 @RequestMapping("/getquiz")
 public class GetQuiz {
 		
-	final static String location = "D:\\javascript\\quiz";
 	JSONArray jsonArray;
 	
 	@RequestMapping(value = "/{category}/{name}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<String> getDirectories(@PathVariable("category") String category, @PathVariable("name") String name) {  
     	jsonArray = new JSONArray();
-    	
 		return new ResponseEntity<String>("", HttpStatus.OK);				
 	}
 }

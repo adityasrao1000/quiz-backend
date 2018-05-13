@@ -14,15 +14,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import static config.Variables.*;
 
 @Controller
 @RequestMapping("/tutorial")
-public class QuizJsonApi {
+public class TutorialJsonApi {
 		
 
     @RequestMapping(value = "/{tutorial}/{section}",  method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<String> findOne(@PathVariable("tutorial") String tutorial,@PathVariable("section") String section, @RequestBody String json) {  
+    	
+    	if(section == "") {
+    		return new ResponseEntity<String>("please specify a valid file name", HttpStatus.NOT_FOUND);
+    	}
     	try{    
             streamFile(json,tutorial,section);
         }
@@ -45,8 +50,10 @@ public class QuizJsonApi {
     	
     	JSONParser parser = new JSONParser();
     	JSONArray json1 = (JSONArray) parser.parse(json);
-        FileOutputStream fout=new FileOutputStream("D:\\javascript\\"+tutorial+"\\"+section+".json");  
+        FileOutputStream fout=new FileOutputStream(basefolder+"\\"+tutorial+"\\"+section+".json");  
         fout.write(json1.toString().getBytes());  
+        
+        //close resource stream
         if(fout!=null) {
           fout.close(); 
         }

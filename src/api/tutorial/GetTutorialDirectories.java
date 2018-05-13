@@ -5,7 +5,6 @@ import java.io.FilenameFilter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.json.simple.JSONArray;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,12 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import static config.Variables.*;
 
 @Controller
 @RequestMapping("/directories")
 public class GetTutorialDirectories {
-		
-	final static String location = "D:\\javascript";
+	
 	JSONArray jsonArray;
 	
     @SuppressWarnings("unchecked")
@@ -28,7 +27,9 @@ public class GetTutorialDirectories {
     	
     	jsonArray =  new JSONArray();
     	try {
-	    	File file = new File(location);
+    		
+    		/* filter out only directories */
+	    	File file = new File(basefolder);
 	    	String[] directories = file.list(new FilenameFilter() {
 	    	  @Override
 	    	  public boolean accept(File current, String name) {
@@ -36,10 +37,12 @@ public class GetTutorialDirectories {
 	    	  }
 	    	});
 	    	
+	    	/* convert array to list and filter out quiz and image directories */
 	    	List<String> dirs = Arrays.asList(directories).stream()
 		                        .filter(p -> !(p.equals("quiz") ||p.equals("images") ))
 		                        .collect(Collectors.toList()); // collecting as list;
 	    	
+	    	// add all the directories to the JSONArray Object
 	        dirs.forEach(val -> jsonArray.add(val));
     	}catch(Exception e) {
     		System.out.println(e);

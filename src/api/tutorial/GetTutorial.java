@@ -9,21 +9,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import static config.Variables.*;
 
 @Controller
 @RequestMapping("/gettutorial")
 public class GetTutorial {
 		
-	final static String location = "D:\\javascript";
 	JSONArray jsonArray;
-	
+
 	@RequestMapping(value = "/{tutorial}/{section}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<String> getDirectories(@PathVariable("tutorial") String tutorial, @PathVariable("section") String section) {  
-    	jsonArray = new JSONArray();
+    	
+		jsonArray = new JSONArray();
     	StringBuffer file= new StringBuffer("");
+
     	try {
-	    	FileInputStream fin=new FileInputStream(location+"/"+tutorial+"/"+section+".json");    
+	    	FileInputStream fin=new FileInputStream(basefolder+"/"+tutorial+"/"+section+".json");    
 	    	int i=0;    
             while((i=fin.read())!=-1){    
              file.append((char)i);    
