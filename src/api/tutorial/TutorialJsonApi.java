@@ -25,9 +25,6 @@ public class TutorialJsonApi {
     @ResponseBody
     public ResponseEntity<String> findOne(@PathVariable("tutorial") String tutorial,@PathVariable("section") String section, @RequestBody String json) {  
     	
-    	if(section == "") {
-    		return new ResponseEntity<String>("please specify a valid file name", HttpStatus.NOT_FOUND);
-    	}
     	try{    
             streamFile(json,tutorial,section);
         }

@@ -32,7 +32,7 @@ select.form-control{
 .content-ops{
 	background: whitesmoke;
 	border: 1px solid lightgrey;
-	border-bottom:none;"
+	border-bottom:none;
 }
 textarea.form-control, input.form-control, .btn{
 	border-radius:0;
@@ -65,4 +65,26 @@ textarea.form-control, input.form-control, .btn{
 	 max-height:400px;
 	 margin:auto;
 	 margin-top:0;
+}
+
+#alert{
+	display:none;
+	position:fixed;
+	top:0;
+	left: 0;
+	width:100%; 
+	height:100%;
+	background: rgba(204, 206, 209, 0.6);
+}
+#alert .box{
+	width: 300px;
+	height: 150px;
+	margin:auto; 
+	position:relative; 
+	top:35%; 
+	background:white;
+}
+#alert .box h3{
+	text-align:center;
+	margin-top:0px;
 }

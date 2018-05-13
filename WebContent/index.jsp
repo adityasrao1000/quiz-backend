@@ -120,6 +120,14 @@
 <div class="col-sm-2">
 </div>
 </div>
+<div id="alert">
+  <div class="box">
+    <br>
+    <h3>Request failed</h3>
+   <br>
+   <button type="button" @click="close" class="btn btn-default" style="float:bottom; display:block;margin:auto">close</button>
+  </div>
+</div>
 </div>
 <script src="tutorial/index.js"></script>
 </body>

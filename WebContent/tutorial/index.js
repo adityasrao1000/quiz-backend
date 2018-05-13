@@ -26,7 +26,8 @@ var vm = new Vue({
 				    console.log(response);
 			    })
 			    .catch(function (error) {
-			        console.log(error);
+					console.log(error.response.status);
+					document.getElementById("alert").style.display = 'block';
 			    });
 		  },
 		  insert: function(event, index) {
@@ -83,7 +84,8 @@ var vm = new Vue({
 				     vm.updateJsonObject();
 				    }else{
 				    	//if folder is empty
-				    	vm.items = [];
+						vm.items = [];
+						vm.section = '';
 				    }
 			    })
 			    .catch(function (error) {
@@ -112,6 +114,9 @@ var vm = new Vue({
 			    .catch(function (error) {
 			        console.log(error);
 			    });
+		  }, 
+		  close: function(){
+			  document.getElementById("alert").style.display = 'none';
 		  }
 	  },
 	  mounted: function(){
