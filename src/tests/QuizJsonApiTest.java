@@ -4,7 +4,7 @@ import java.io.IOException;
 import org.json.simple.parser.ParseException;
 import org.junit.Test;
 
-import api.QuizJsonApi;
+import api.tutorial.QuizJsonApi;
 
 
 public class QuizJsonApiTest {

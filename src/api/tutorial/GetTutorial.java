@@ -1,4 +1,4 @@
-package api;
+package api.tutorial;
 
 import java.io.FileInputStream;
 import org.json.simple.JSONArray;

@@ -1,4 +1,4 @@
-package api;
+package api.tutorial;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

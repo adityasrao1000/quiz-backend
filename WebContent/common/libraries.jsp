@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Axios library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
-<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="common/common.css">
 <!-- initialize bootstrap tooltip -->
 <script>
 $(document).ready(function(){
