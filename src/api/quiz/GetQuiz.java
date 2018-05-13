@@ -10,16 +10,32 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import static config.Variables.*;
 
+import java.io.FileInputStream;
+
 @Controller
 @RequestMapping("/getquiz")
 public class GetQuiz {
 		
-	JSONArray jsonArray;
 	
-	@RequestMapping(value = "/{category}/{name}", method = RequestMethod.GET)
+	JSONArray jsonArray;
+
+	@RequestMapping(value = "/{tutorial}/{section}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<String> getDirectories(@PathVariable("category") String category, @PathVariable("name") String name) {  
-    	jsonArray = new JSONArray();
-		return new ResponseEntity<String>("", HttpStatus.OK);				
+    public ResponseEntity<String> getDirectories(@PathVariable("tutorial") String tutorial, @PathVariable("section") String section) {  
+    	
+		jsonArray = new JSONArray();
+    	StringBuffer file= new StringBuffer("");
+
+    	try {
+	    	FileInputStream fin=new FileInputStream(quizfolder+"/"+tutorial+"/"+section+".json");    
+	    	int i=0;    
+            while((i=fin.read())!=-1){    
+             file.append((char)i);    
+            }    
+            fin.close();
+    	}catch(Exception e) {
+    		System.out.println(e);
+    	}
+		return new ResponseEntity<String>(file.toString(), HttpStatus.OK);				
 	}
 }

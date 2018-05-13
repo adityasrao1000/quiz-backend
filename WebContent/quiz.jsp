@@ -11,12 +11,15 @@
 <jsp:include page="common/navbar.jsp" />
 <div class="container-fluid" id="quiz">
 <div class="row">
-    <div class="col-sm-1">
-    </div>
-    <div class="col-sm-9">
-    </div>
-    <div class="col-sm-2">
-    </div>
+<div class="col-sm-1">
+</div>
+<div class="col-sm-9">
+    <button @click="send" v-if="items.length>0" style="display:block;margin:auto;" type="button" class="btn btn-info">
+      Commit changes
+    </button>
+</div>
+<div class="col-sm-2">
+</div>
 </div>
 </div>
 <script src="quiz/quiz.js"></script>
