@@ -16,13 +16,16 @@ import static config.Variables.*;
 @Controller
 @RequestMapping("/gettutorial")
 public class GetTutorial {
-		
+	
+	// declare objects and variables
 	JSONArray jsonArray;
 	StringJoiner resourceUrl;
+	
 	@RequestMapping(value = "/{tutorial}/{section}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<String> getDirectories(@PathVariable("tutorial") String tutorial, @PathVariable("section") String section) {  
     	
+		// initialize objects and variables
 		jsonArray = new JSONArray();
     	StringBuffer file= new StringBuffer("");
         resourceUrl = new StringJoiner("\\");
