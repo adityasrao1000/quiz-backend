@@ -45,7 +45,7 @@ var vm = new Vue({
 			    this.section = event.target.value;
 			  }
 			  this.items =[];
-			  let url = 'getquiz/'+this.tutorial+"/"+this.quiz;
+			  let url = 'getquiz/'+this.tutorial+"/"+this.section;
 			  axios({
 				  method: 'get',
 				  url: url

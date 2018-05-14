@@ -52,7 +52,6 @@ public class QuizJsonApi {
     	resourceUrl.add(tutorial);
     	resourceUrl.add(section+".json");
     	
-    	System.out.println(resourceUrl);
     	JSONParser parser = new JSONParser();
     	JSONArray json1 = (JSONArray) parser.parse(json);
         FileOutputStream fout=new FileOutputStream(quizfolder+"\\"+tutorial+"\\"+section+".json");  

@@ -14,7 +14,10 @@ body{
 .well-sm p{
     margin-top: -8px;
 }
-
+.well-color{
+	background:#BDBDBD;
+	color:white;
+}
 .dropdown-menu{
 	margin-top: -11px;
 	margin-left: -10px;

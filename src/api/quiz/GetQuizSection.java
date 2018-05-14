@@ -48,7 +48,6 @@ public class GetQuizSection {
 	    	
 	    	//adds the list content into the JSONArray
 	        dirs.forEach(val -> jsonArray.add(val));
-	        System.out.println(jsonArray.toJSONString());
     	}catch(Exception e) {
     		System.out.println(e);
     	}

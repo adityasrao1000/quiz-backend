@@ -36,7 +36,6 @@ public class GetQuiz {
     	}catch(Exception e) {
     		System.out.println(e);
     	}
-    	System.out.println("quiz");
 		return new ResponseEntity<String>(file.toString(), HttpStatus.OK);				
 	}
 }
