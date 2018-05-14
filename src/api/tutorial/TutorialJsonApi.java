@@ -53,8 +53,6 @@ public class TutorialJsonApi {
         //close resource stream
         if(fout!=null) {
           fout.close(); 
-        }
-        System.out.println("success...");    
-       
+        }         
     }
 }

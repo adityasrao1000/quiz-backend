@@ -9,6 +9,9 @@ var vm = new Vue({
           quizzes: []
 	  },
 	  methods: {
+		insetContent: function(){
+			this.items.push({"question": "","options": ["", ""],"option": -1,"answer": {"correct_answer": 0}});
+		},
 		updatetutorial: function(){
 			  this.sections =[];
 			  let url = 'getsection/'+this.tutorial;

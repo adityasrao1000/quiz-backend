@@ -14,6 +14,15 @@
 <div class="col-sm-1">
 </div>
 <div class="col-sm-9">
+    <div class="well well-sm well-color">
+      <div class="dropdown" style="float:left;">
+      <p class="dropdown-toggle" style="width:100%;" data-toggle="dropdown">Add Content <span class="glyphicon glyphicon-plus"></span></p>
+      <ul class="dropdown-menu">
+        <li><a href="#" @click="insertContent(0, 'quiz')">add quiz</a></li>
+      </ul>
+      </div>
+      <br>
+    </div>
     <button @click="send" v-if="items.length>0" style="display:block;margin:auto;" type="button" class="btn btn-info">
       Commit changes
     </button>
