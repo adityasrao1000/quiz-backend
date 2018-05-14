@@ -3,18 +3,18 @@ var vm = new Vue({
 	  el: '#quiz',
 	  data: {
 		  tutorial: 'javascript',
-		  quiz: 'overview',
+		  section: 'javascript-1',
 	      items: [],
           tutorials: [],
-          quizzes: []
+          sections: []
 	  },
 	  methods: {
 		insetContent: function(){
-			this.items.push({"question": "","options": ["", ""],"option": -1,"answer": {"correct_answer": 0}});
+			this.items.push({"question": [{"paragraph": ""}],"options": ["", ""],"option": -1,"answer": {"correct_answer": 0}});
 		},
 		updatetutorial: function(){
 			  this.sections =[];
-			  let url = 'getsection/'+this.tutorial;
+			  let url = 'getquizsection/'+this.tutorial;
 			  axios({
 				  method: 'get',
 				  url: url
@@ -58,13 +58,16 @@ var vm = new Vue({
 			    .catch(function (error) {
 			        console.log(error);
 			    });
-		  }  
+			},
+			send: function(){
+
+			}  
 	  },
 	  mounted: function(){
 		  let self = this;
 		  axios({
 			  method: 'get',
-			  url: 'directories'
+			  url: 'quizdirectories'
 			})
 			.then(function (response) {
 			    if(response.data.length > 0){

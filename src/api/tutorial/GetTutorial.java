@@ -1,6 +1,8 @@
 package api.tutorial;
 
 import java.io.FileInputStream;
+import java.util.StringJoiner;
+
 import org.json.simple.JSONArray;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,16 +18,20 @@ import static config.Variables.*;
 public class GetTutorial {
 		
 	JSONArray jsonArray;
-
+	StringJoiner resourceUrl;
 	@RequestMapping(value = "/{tutorial}/{section}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<String> getDirectories(@PathVariable("tutorial") String tutorial, @PathVariable("section") String section) {  
     	
 		jsonArray = new JSONArray();
     	StringBuffer file= new StringBuffer("");
-
+        resourceUrl = new StringJoiner("\\");
+        
+        resourceUrl.add(basefolder);
+    	resourceUrl.add(tutorial);
+    	resourceUrl.add(section+".json");
     	try {
-	    	FileInputStream fin=new FileInputStream(basefolder+"/"+tutorial+"/"+section+".json");    
+	    	FileInputStream fin=new FileInputStream(resourceUrl.toString());    
 	    	int i=0;    
             while((i=fin.read())!=-1){    
              file.append((char)i);    

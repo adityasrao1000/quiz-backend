@@ -1,4 +1,4 @@
-package api.tutorial;
+package api.quiz;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import static config.Variables.*;
 
 @Controller
-@RequestMapping("/tutorial")
-public class TutorialJsonApi {
+@RequestMapping("/quiz")
+public class QuizJsonApi {
 		
 
     @RequestMapping(value = "/{tutorial}/{section}",  method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -48,13 +48,14 @@ public class TutorialJsonApi {
     public static void streamFile(String json, String tutorial, String section) throws IOException, ParseException {
     	
     	StringJoiner resourceUrl = new StringJoiner("\\");
-    	resourceUrl.add(basefolder);
+    	resourceUrl.add(quizfolder);
     	resourceUrl.add(tutorial);
     	resourceUrl.add(section+".json");
     	
+    	System.out.println(resourceUrl);
     	JSONParser parser = new JSONParser();
     	JSONArray json1 = (JSONArray) parser.parse(json);
-        FileOutputStream fout=new FileOutputStream(resourceUrl.toString());  
+        FileOutputStream fout=new FileOutputStream(quizfolder+"\\"+tutorial+"\\"+section+".json");  
         fout.write(json1.toString().getBytes());  
         
         //close resource stream

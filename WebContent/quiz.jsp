@@ -14,6 +14,22 @@
 <div class="col-sm-1">
 </div>
 <div class="col-sm-9">
+  <br>
+  <div class="row">
+    <div class="col-xs-6">
+      <p>Tutorial</p>
+      <select class="form-control input-sm" v-bind:value="tutorial" @input="updatefile($event)">
+	    <option v-for="val in tutorials">{{val}}</option>
+	  </select>
+    </div>
+    <div class="col-xs-6">
+      <p>Section</p>
+      <select class="form-control input-sm" v-bind:value="section"  @input="updateJsonObject($event)">
+	    <option v-for="val in sections">{{val}}</option>
+	  </select>
+    </div>
+  </div>
+  <br>
     <div class="well well-sm well-color">
       <div class="dropdown" style="float:left;">
       <p class="dropdown-toggle" style="width:100%;" data-toggle="dropdown">Add Content <span class="glyphicon glyphicon-plus"></span></p>
