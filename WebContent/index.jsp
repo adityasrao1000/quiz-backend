@@ -76,6 +76,15 @@
 	<br>
 	<jsp:include page="tutorial/add-content.jsp" />
   </div>
+  <div class="title" v-if="value.type==='sub-title'">
+    <jsp:include page="tutorial/content-options.jsp" />
+    <input class="form-control" rows="6" v-bind:value="value.item" class="paragraph"  @input="insert($event, index)">
+    <div v-bind:id="'demo'+index" class="collapse">
+    <h4 style="background-color: #f5f5f5; border: 1px solid #ccc; margin-top:0; padding: 6px 1px;" class="language-css" id="pre">{{value.item}}</h4>
+    </div>
+	<br>
+	<jsp:include page="tutorial/add-content.jsp" />
+  </div>
   <div class="title" v-if="value.type==='image-link'">
     <jsp:include page="tutorial/content-options.jsp" />
     <input class="form-control" rows="6" v-bind:value="value.item" class="paragraph"  @input="insert($event, index)">
