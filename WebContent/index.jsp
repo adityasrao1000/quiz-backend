@@ -89,7 +89,7 @@
     <jsp:include page="tutorial/content-options.jsp" />
     <input class="form-control" rows="6" v-bind:value="value.item" class="paragraph"  @input="insert($event, index)">
     <div v-bind:id="'demo'+index" class="collapse">
-    <ul><li>{{value.item}}</li></ul>
+    <img v-bind:src="value.item" class="img-responsive" @error="imageFailed($event)">
     </div>
 	<br>
 	<jsp:include page="tutorial/add-content.jsp" />
