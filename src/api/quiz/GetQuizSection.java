@@ -18,40 +18,36 @@ import static config.Variables.*;
 @Controller
 @RequestMapping("/getquizsection")
 public class GetQuizSection {
-		
+
 	JSONArray jsonArray;
-	
+
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/{name}",  method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity<String> getSections(@PathVariable("name") String name) { 
-    	
-    	jsonArray =  new JSONArray();
-    	
-    	try {
-	    	File file = new File(quizfolder+"/"+name);
-	    	
-	    	//retain only JSON file types and filter out directories
-	    	String[] directories = file.list(new FilenameFilter() {
-	    	  @Override
-	    	  public boolean accept(File current, String name) {
-	    		String fileName = new File(current, name).getName();
-	    	    return new File(current, name).isFile() && fileName.substring(fileName.lastIndexOf(".")+1).equals("json");
-	    	  }
-	    	});
-	    	
-	    	//converts the array into list and strip out .json
-	    	List<String> dirs = Arrays.asList(directories).stream()
-	    			            .map(p -> p = p.substring(0, p.lastIndexOf(".")))
-	    			            .filter(p -> !p.equals("menu"))
-	    			            .collect(Collectors.toList()); // collecting as list;
-	    	
-	    	//adds the list content into the JSONArray
-	        dirs.forEach(val -> jsonArray.add(val));
-    	}catch(Exception e) {
-    		System.out.println(e);
-    	}
+	@RequestMapping(value = "/{name}", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<String> getSections(@PathVariable("name") String name) {
+
+		jsonArray = new JSONArray();
+
+		File file = new File(quizfolder + "/" + name);
+
+		// retain only JSON file types and filter out directories
+		String[] directories = file.list(new FilenameFilter() {
+			@Override
+			public boolean accept(File current, String name) {
+				String fileName = new File(current, name).getName();
+				return new File(current, name).isFile()
+						&& fileName.substring(fileName.lastIndexOf(".") + 1).equals("json");
+			}
+		});
+
+		// converts the array into list and strip out .json
+		List<String> dirs = Arrays.asList(directories).stream().map(p -> p = p.substring(0, p.lastIndexOf(".")))
+				.filter(p -> !p.equals("menu")).collect(Collectors.toList()); // collecting as list;
+
+		// adds the list content into the JSONArray
+		dirs.forEach(val -> jsonArray.add(val));
+
 		return new ResponseEntity<String>(jsonArray.toJSONString(), HttpStatus.OK);
 	}
-    
+
 }

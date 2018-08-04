@@ -17,34 +17,29 @@ import static config.Variables.*;
 @Controller
 @RequestMapping("/quizdirectories")
 public class GetQuizDirectories {
-	
+
 	JSONArray jsonArray;
-	
-    @SuppressWarnings("unchecked")
+
+	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity<String> getDirectories() {  
-    	jsonArray =  new JSONArray();
-    	try {
-    		
-    		/* filter out only directories */
-	    	File file = new File(quizfolder);
-	    	String[] directories = file.list(new FilenameFilter() {
-	    	  @Override
-	    	  public boolean accept(File current, String name) {
-	    	    return new File(current, name).isDirectory();
-	    	  }
-	    	});
-	    	
-	    	List<String> dirs = Arrays.asList(directories).stream()
-		                        .collect(Collectors.toList()); // collecting as list;
-	    	
-	    	// add all the directories to the JSONArray Object
-	        dirs.forEach(val -> jsonArray.add(val));
-	  
-    	}catch(Exception e) {
-    		System.out.println(e);
-    	}
-		return new ResponseEntity<String>(jsonArray.toJSONString(), HttpStatus.OK);				
+	@ResponseBody
+	public ResponseEntity<String> getDirectories() {
+		jsonArray = new JSONArray();
+
+		/* filter out only directories */
+		File file = new File(quizfolder);
+		String[] directories = file.list(new FilenameFilter() {
+			@Override
+			public boolean accept(File current, String name) {
+				return new File(current, name).isDirectory();
+			}
+		});
+
+		List<String> dirs = Arrays.asList(directories).stream().collect(Collectors.toList()); // collecting as list;
+
+		// add all the directories to the JSONArray Object
+		dirs.forEach(val -> jsonArray.add(val));
+
+		return new ResponseEntity<String>(jsonArray.toJSONString(), HttpStatus.OK);
 	}
 }
